@@ -1,1 +1,1 @@
-# food-recognition
+# food-classification
