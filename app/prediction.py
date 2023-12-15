@@ -47,6 +47,15 @@ def prediction():
             class_name = labels[index]
             confidence_score = prediction[0][index]
             nutrition_data = nutrition[index].astype('str')
+            
+            if confidence_score < 0.5:
+                return jsonify({
+                    'status': {
+                        'code': 200,
+                        'message': 'Prediction failed due to low confidence level.'
+                    },
+                    'suggestedAction': 'Silahkan mengambil gambar jelas agar hasil prediksi lebih akurat.'
+                }), 200
 
             return jsonify({
                 'status': {
